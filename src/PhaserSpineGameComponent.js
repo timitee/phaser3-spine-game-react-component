@@ -18,6 +18,12 @@ function create() {
 export const PhaserGameComponent = () => {
   const [isReady, setReady] = useState(false)
   useEffect(() => {
+    const cleanUp = () => { // mainGame
+      // Maybe don't clean up this.
+      // mainGame.plugins.removeScenePlugin("SpinePlugin")
+      // Do this to remove the old div.
+      setReady(false)
+    }
     let config = {
       height: 300,
       width: 400,
@@ -38,14 +44,17 @@ export const PhaserGameComponent = () => {
       type: Phaser.AUTO,
     }
     let game = new Phaser.Game(config)
-    game.plugins.installScenePlugin("SpinePlugin", window.SpinePlugin, "spine")
+    // Maybe not here.
+    // game.plugins.installScenePlugin("SpinePlugin", window.SpinePlugin, "spine")
     game.events.on("show", setReady)
-    game.events.on("destroy", () => setReady(false))
-    // Don't clean up with this.
+    // Maybe don't clean up here.
+    game.events.on("destroy", cleanUp)
     return () => {
-      game.plugins.removeScenePlugin("SpinePlugin")
+      // Maybe don't clean up here.
+      // cleanUp(game)
       game.destroy(true)
-      // setReady(false)
+      // Maybe don't clean up here.
+      // cleanUp(game)
     }
   }, [])
   return <div id="phaser-game" className={isReady ? "visible" : "invisible"} />
