@@ -1,0 +1,6 @@
+printWidth: 80
+overrides:
+  - files:
+      - "**/*.{js,json,scss,md,html,mjs}"
+    options:
+      semi: false
