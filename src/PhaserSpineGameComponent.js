@@ -11,7 +11,7 @@ function preload() {
 }
 
 function create() {
-  this.SPINE = this.add.spine(170, 200, "owl", "idle", true).setScale(0.3)
+  this.SPINE = this.add.spine(170, 200, "owl", "idle", true).setScale(0.2)
   this.game.events.emit("show", true)
 }
 
@@ -40,14 +40,12 @@ export const PhaserGameComponent = () => {
     let game = new Phaser.Game(config)
     game.plugins.installScenePlugin("SpinePlugin", window.SpinePlugin, "spine")
     game.events.on("show", setReady)
-    game.events.on("destroy", () => {
-      console.log("!")
-      // game.plugins.removeScenePlugin("SpinePlugin")
-      setReady(false)
-    })
+    game.events.on("destroy", () => setReady(false))
+    // Don't clean up with this.
     return () => {
+      game.plugins.removeScenePlugin("SpinePlugin")
       game.destroy(true)
-      setReady(false)
+      // setReady(false)
     }
   }, [])
   return <div id="phaser-game" className={isReady ? "visible" : "invisible"} />
