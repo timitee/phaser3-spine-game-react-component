@@ -1,4 +1,6 @@
-import { PhaserGameComponent } from "./PhaserSpineGameComponent"
+import "./App.css"
+import { PhaserGameComponent } from "./PhaserRobotComponent"
+
 function App() {
   return (
     <main>
