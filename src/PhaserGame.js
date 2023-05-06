@@ -15,7 +15,7 @@ function create() {
   this.game.events.emit("show", true)
 }
 
-const cleanUp  = (mainGame) => { 
+const cleanUp = (mainGame) => {
   // Maybe don't clean up this.
   mainGame.plugins.removeScenePlugin("SpinePlugin")
 }
@@ -45,5 +45,3 @@ let game = new Phaser.Game(config)
 // game.events.on("show", setReady)
 // Maybe don't clean up here.
 game.events.on("destroy", () => cleanUp(game))
-
-

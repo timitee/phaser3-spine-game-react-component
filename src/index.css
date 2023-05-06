@@ -1,22 +1,15 @@
 body {
   background: #000000;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  padding: 0;
 }
 
 .visible {
-  border: 5 red solid;
+  border: 10px red solid;
+  display: block;
 }
 
 .invisible {
-  border: 1 green solid;
+  border: 10px green solid;
+  display: none;
 }

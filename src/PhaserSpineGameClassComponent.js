@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 import "phaser/plugins/spine/dist/SpinePluginDebug.js"
-import  { Component } from "react"
+import { Component } from "react"
 import pngSPINE from "./owl/owl-pro.png"
 import atlasSPINE from "./owl/owl-pro.atlas"
 import jsonSPINE from "./owl/owl-pro.json"
@@ -15,7 +15,7 @@ function create() {
   this.game.events.emit("show", true)
 }
 
-export  class PhaserGameComponent extends Component {
+export class PhaserGameComponent extends Component {
   componentDidMount() {
     // let  {
     //   GAMECONFIG,
@@ -32,8 +32,8 @@ export  class PhaserGameComponent extends Component {
     //   GameOverScene,
     //   funPlugin,
     //   globalPlugins,
-    // } = this.props   
-    const cleanUp  = () => { // mainGame
+    // } = this.props
+    const cleanUp = () => {
       // Maybe don't clean up this.
       // mainGame.plugins.removeScenePlugin("SpinePlugin")
       // Do this to remove the old div.
@@ -58,23 +58,22 @@ export  class PhaserGameComponent extends Component {
       transparent: true,
       type: Phaser.AUTO,
     }
-    new Phaser.Game(config)
+    const GAME = new Phaser.Game(config)
+    GAME.events.on("destroy", cleanUp)
     // Maybe not here.
     // game.plugins.installScenePlugin("SpinePlugin", window.SpinePlugin, "spine")
     // game.events.on("show", setReady)
     // Maybe don't clean up here.
-    game.events.on("destroy", cleanUp)
   }
 
   shouldComponentUpdate() {
     console.log("shouldComponentUpdate")
-    return false;
+    return false
   }
 
   render() {
     return <div id="phaser-game" />
   }
 }
-
 
 export default PhaserGameComponent

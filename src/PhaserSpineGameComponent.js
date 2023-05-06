@@ -18,7 +18,8 @@ function create() {
 export const PhaserGameComponent = () => {
   const [isReady, setReady] = useState(false)
   useEffect(() => {
-    const cleanUp = () => { // mainGame
+    const cleanUp = () => {
+      // mainGame
       // Maybe don't clean up this.
       // mainGame.plugins.removeScenePlugin("SpinePlugin")
       // Do this to remove the old div.
